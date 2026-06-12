@@ -3,166 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Academic Profile</title>
+    <title>ZHANG Xichen - Academic Profile</title>
     <style>
-          Minimalist Academic Style */
+        /* 导入现代柔和的无衬线字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        /* 全局样式 */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fff;
-        }
-        
-          Header & Profile Layout */
-        .header-container {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: #475569; /* 柔和的深灰色 */
+            background-color: #f8fafc; /* 极浅的蓝灰背景 */
+            margin: 0;
+            padding: 0;
             display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap-reverse;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 30px;
+            justify-content: center;
         }
-        .header-info {
-            flex: 1;
-            min-width: 300px;
+
+        /* 页面主容器：采用现代的圆角卡片设计 */
+        .layout-container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            margin: 60px 20px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            overflow: hidden; /* 保证子元素的圆角不溢出 */
         }
-        .header-photo {
-            margin-left: 20px;
-            margin-bottom: 20px;
+
+        /* 左侧固定侧边栏 */
+        .sidebar {
+            width: 320px;
+            background-color: #fdfdfd;
+            border-right: 1px solid #f1f5f9;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-shrink: 0; /* 防止被压缩 */
         }
-        .header-photo img {
+
+        .profile-photo {
             width: 160px;
             height: 160px;
-             border-radius: 50%;   Makes the photo circular. Remove this line for a square photo. */
+            border-radius: 50%;
             object-fit: cover;
-            border: 1px solid #e4e4e7;
+            margin-bottom: 25px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(148, 163, 184, 0.2);
         }
 
-        /* Typography & Links */
-        h1 { font-size: 2.2rem; color: #111; margin: 0 0 10px 0; }
-        h2 { font-size: 1.4rem; color: #222; margin-top: 30px; border-bottom: 1px solid #fafafa; padding-bottom: 5px; }
-        p { margin: 0 0 15px; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
+        .sidebar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 10px 0;
+        }
 
-        /* Custom Link Bar */
-        .link-bar {
-            margin-top: 15px;
+        .sidebar .subtitle {
             font-size: 0.95rem;
-        }
-        .link-bar a {
-            margin-right: 15px;
-            font-weight: 500;
+            color: #64748b;
+            margin-bottom: 30px;
         }
 
-        /* PDF Document Button */
+        /* 左侧链接按钮组 */
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .link-group a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background-color: #ffffff;
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .link-group a:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        /* 右侧主要内容区 */
+        .main-content {
+            flex: 1;
+            padding: 60px 70px;
+            background-color: #ffffff;
+        }
+
+        .main-content section {
+            margin-bottom: 45px;
+        }
+
+        .main-content h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .main-content p {
+            margin: 0 0 16px 0;
+        }
+
+        /* 列表样式 */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 12px; }
+        strong { color: #334155; }
+
+        /* 论文/项目卡片样式 */
+        .pub-item {
+            background: #f8fafc;
+            padding: 20px 25px;
+            border-radius: 12px;
+            border-left: 4px solid #cbd5e1;
+            margin-bottom: 16px;
+            transition: transform 0.2s ease;
+        }
+        
+        .pub-item:hover {
+            transform: translateX(4px);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
         .doc-link {
             display: inline-block;
-            background-color: #f4f4f5;
-            color: #4b5563;
-            padding: 2px 8px;
-            border-radius: 4px;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 14px;
+            border-radius: 20px; /* 胶囊型按钮，更现代 */
             font-size: 0.85rem;
+            font-weight: 500;
             margin-left: 10px;
-            border: 1px solid #e4e4e7;
-        }
-        .doc-link:hover {
-            background-color: #e4e4e7;
-            color: #1f2937;
             text-decoration: none;
+            transition: all 0.2s ease;
         }
 
-        /* Embedded PDF Container */
-        .pdf-container {
-            margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            overflow: hidden;
+        .doc-link:hover {
+            background-color: #bae6fd;
+        }
+
+        /* 页脚 */
+        footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* 响应式设计：在手机或窄屏幕上自动转为上下单栏布局 */
+        @media (max-width: 850px) {
+            .layout-container {
+                flex-direction: column;
+                margin: 0;
+                border-radius: 0;
+            }
+            .sidebar {
+                width: auto;
+                border-right: none;
+                border-bottom: 1px solid #f1f5f9;
+                padding: 40px 20px;
+            }
+            .main-content {
+                padding: 40px 30px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section: Info and Photo -->
-    <div class="header-container">
-        <div class="header-info">
-            <h1>ZHANG Xichen</h1>
-            <p>
-                <strong>Hong Kong Polytechinc University</strong><br>
-                I am currently seeking for Phd positions<br>
-                 [Your University / Institution Name]<br> */
-                  City, State, Country */
-            </p>
-            
-            <!-- Quick Links -->
-            <div class="link-bar">
-                <a href="mailto:xichen.zhang@connect.polyu.hk">[Email]</a>
-                <a href="documents/cv.pdf" target="_blank">[CV]</a>
-                <!--<a href="https://scholar.google.com/" target="_blank">[Google Scholar]</a> -->
-                <!--<a href="https://github.com/" target="_blank">[GitHub]</a> -->
-                <a href="https://www.linkedin.com/in/xichen-zhang-b2058a384/" target="_blank">[LinkedIn]</a>
-            </div>
+<div class="layout-container">
+    
+    <!-- 左侧区域：个人信息与链接 -->
+    <aside class="sidebar">
+        <img src="images/profile.jpg" alt="Profile Photo" class="profile-photo">
+        <h1>ZHANG Xichen</h1>
+        <div class="subtitle">
+            I am currently seeking Ph.D. positions for 2026/27 (All locations/field welcome).<br><br>
+            The Hong Kong Polytechnic University<br>
+            M.S. Electric Vehicles
         </div>
         
-        <div class="header-photo">
-            <!-- Ensure your photo is named profile.jpg and placed in an 'images' folder -->
-            <img src="images/profile.jpg" alt="Profile Photo ">
+        <div class="link-group">
+            <a href="mailto:xichen.zhang@connect.polyu.hk">✉️ Email</a>
+            <a href="documents/cv.pdf" target="_blank">📄 CV</a>
+            <a href="https://www.linkedin.com/in/xichen-zhang-b2058a384/" target="_blank">🔗 LinkedIn</a>
         </div>
-    </div>
+    </aside>
 
-    <!-- Biography Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a [Position] at [Institution], advised by Prof. [Advisor's Name]. My research focuses on [Core Topic 1], [Core Topic 2], and [Core Topic 3]. Previously, I received my B.S./M.S. degree from [Previous Institution] in [Year].</p>
-    </section>
+    <!-- 右侧区域：核心学术内容 -->
+    <main class="main-content">
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <p>My previous research experience mainly focuses on Power Electronics, Wireless Charging, and Converters.</p>
+            <p>Previously, I received my B.S. degree from Nanjing Tech University in 2024, and my M.S. degree from The Hong Kong Polytechnic University in 2026.</p>
+        </section>
 
-    <!-- Research Interests Section -->
-    <section id="research">
-        <h2>Research Interests</h2>
-        <ul>
-            <li><strong>Broad Area 1:</strong> Specific topic, specific topic.</li>
-            <li><strong>Broad Area 2:</strong> Specific topic, specific topic.</li>
-            <li><strong>Broad Area 3:</strong> Specific topic, specific topic.</li>
-        </ul>
-    </section>
+        <section id="research">
+            <h2>Research Interests</h2>
+            <ul>
+                <li><strong>Wireless Power Transfer (WPT):</strong> LLC DC-DC converter design, optimization, and hardware implementation.</li>
+                <li><strong>High-Efficiency Converters & WBG Devices:</strong> Multilevel converters, wide-bandgap device applications, and topology derivation.</li>
+                <li><strong>Robotics & Motor Control:</strong> Closed-loop BLDC motor control systems, cyber-physical microgrid resilience.</li>
+            </ul>
+        </section>
 
-    <!-- Selected Works / Publications Section -->
-    <section id="publications">
-        <h2>Selected Works</h2>
-        <ul>
-            <!-- Method 1: Open PDF in a new tab -->
-            <li>
-                <strong>Title of Your First Paper or Project</strong> <br>
-                Firstname Lastname, Co-author One, Co-author Two. <em>Name of Journal or Conference</em>, 2025.
-                <a class="doc-link" href="documents/my_previous_work_1.pdf" target="_blank">📄 PDF</a>
-            </li>
-
-            <!-- Method 2: Embedded PDF viewer -->
-            <li>
-                <strong>Title of Your Second Paper (With Embedded Viewer)</strong> <br>
-                Firstname Lastname. <em>Working Paper</em>, 2026.
-                <a class="doc-link" href="documents/my_previous_work_2.pdf" target="_blank">📄 PDF</a>
-                
-                <div class="pdf-container">
-                    <!-- The iframe displays the PDF directly on the page -->
-                    <iframe src="documents/my_previous_work_2.pdf" width="100%" height="450px" style="border: none;">
-                        Your browser does not support inline PDFs. Please download the PDF to view it.
-                    </iframe>
+        <section id="publications">
+            <h2>Previous Works</h2>
+            
+            <div class="pub-item">
+                <div class="pub-title">Advanced Segmented-Vector Pulse Frequency Modulation for Wireless Power Transfer</div>
+                <div style="font-size: 0.95rem; color: #64748b;">
+                    Master's degree Dissertation , 2025.
+                    <a class="doc-link" href="documents/ASVPFM.pdf" target="_blank">View PDF</a>
                 </div>
-            </li>
-        </ul>
-    </section>
+            </div>
+            
+        </section>
 
-    <!-- Footer / Optional Additional Info -->
-    <section id="footer" style="margin-top: 50px; font-size: 0.85rem; color: #777; border-top: 1px solid #eee; padding-top: 10px;">
-        <p>&copy; 2026 Firstname Lastname. Last updated: June 2026.</p>
-    </section>
+        <footer>
+            <p>&copy; Last updated: June 2026.</p>
+        </footer>
+        
+    </main>
+</div>
 
 </body>
 </html>
