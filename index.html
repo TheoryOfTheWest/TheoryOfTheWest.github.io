@@ -1,54 +1,168 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>My test page</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Academic Profile</title>
+    <style>
+          Minimalist Academic Style */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+        
+          Header & Profile Layout */
+        .header-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap-reverse;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 30px;
+        }
+        .header-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .header-photo {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .header-photo img {
+            width: 160px;
+            height: 160px;
+             border-radius: 50%;   Makes the photo circular. Remove this line for a square photo. */
+            object-fit: cover;
+            border: 1px solid #e4e4e7;
+        }
 
-    <link href="styles/styles.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
-      rel="stylesheet" />
+        /* Typography & Links */
+        h1 { font-size: 2.2rem; color: #111; margin: 0 0 10px 0; }
+        h2 { font-size: 1.4rem; color: #222; margin-top: 30px; border-bottom: 1px solid #fafafa; padding-bottom: 5px; }
+        p { margin: 0 0 15px; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
 
+        /* Custom Link Bar */
+        .link-bar {
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .link-bar a {
+            margin-right: 15px;
+            font-weight: 500;
+        }
 
-  </head>
-  <body>
-    <h1>Test article</h1>
-    <figure>
-      <img src="images\111.png" alt="My test penguin image" title="This is my test image"/>
-      <figcaption>this is my test image</figcaption>
-    </figure>
-    
-    <!---->
-    <p>this is a list test</p>
-    <ul>
-      <li>list test 1</li>
-      <li>list test 2</li>
-      <li>list test 3</li>
-    </ul>
-    <p>list test ends</p>
-    <!---->
-    <iframe src="//player.bilibili.com/player.html?aid=80433022&bvid=BV1GJ411x7h7&cid=137649199&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-    <p>this is a list test</p>
-    <ul>
-      <li>list test 1</li>
-      <li>list test 2</li>
-      <li>list test 3</li>
-    </ul>
-    <p>list test ends</p>
+        /* PDF Document Button */
+        .doc-link {
+            display: inline-block;
+            background-color: #f4f4f5;
+            color: #4b5563;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+            border: 1px solid #e4e4e7;
+        }
+        .doc-link:hover {
+            background-color: #e4e4e7;
+            color: #1f2937;
+            text-decoration: none;
+        }
 
-    <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/cn/album/%E8%9D%B4%E8%9D%B6/914664926?i=914664938"></iframe>
-    <a href="https://www.baidu.com" title="this is a link test"> link test</a><br/>
-    <a href="mailto:zhangxichen@njtech.edu.cn">contect email</a>
+        /* Embedded PDF Container */
+        .pdf-container {
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
 
-    <a href="https://theoryofthewest.github.io">
-      <img src="images\111.png" alt="My test link penguin image" title="This is my test img link"/>
-    </a>
+    <!-- Header Section: Info and Photo -->
+    <div class="header-container">
+        <div class="header-info">
+            <h1>ZHANG Xichen</h1>
+            <p>
+                <strong>Hong Kong Polytechinc University</strong><br>
+                I am currently seeking for Phd positions<br>
+                 [Your University / Institution Name]<br> */
+                  City, State, Country */
+            </p>
+            
+            <!-- Quick Links -->
+            <div class="link-bar">
+                <a href="mailto:xichen.zhang@connect.polyu.hk">[Email]</a>
+                <a href="documents/cv.pdf" target="_blank">[CV]</a>
+                <!--<a href="https://scholar.google.com/" target="_blank">[Google Scholar]</a> -->
+                <!--<a href="https://github.com/" target="_blank">[GitHub]</a> -->
+                <a href="https://www.linkedin.com/in/xichen-zhang-b2058a384/" target="_blank">[LinkedIn]</a>
+            </div>
+        </div>
+        
+        <div class="header-photo">
+            <!-- Ensure your photo is named profile.jpg and placed in an 'images' folder -->
+            <img src="images/profile.jpg" alt="Profile Photo ">
+        </div>
+    </div>
 
-    <button>切换用户</button>
-    <script src="scripts/main.js" defer></script>
+    <!-- Biography Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a [Position] at [Institution], advised by Prof. [Advisor's Name]. My research focuses on [Core Topic 1], [Core Topic 2], and [Core Topic 3]. Previously, I received my B.S./M.S. degree from [Previous Institution] in [Year].</p>
+    </section>
 
-   
+    <!-- Research Interests Section -->
+    <section id="research">
+        <h2>Research Interests</h2>
+        <ul>
+            <li><strong>Broad Area 1:</strong> Specific topic, specific topic.</li>
+            <li><strong>Broad Area 2:</strong> Specific topic, specific topic.</li>
+            <li><strong>Broad Area 3:</strong> Specific topic, specific topic.</li>
+        </ul>
+    </section>
 
-  </body>
+    <!-- Selected Works / Publications Section -->
+    <section id="publications">
+        <h2>Selected Works</h2>
+        <ul>
+            <!-- Method 1: Open PDF in a new tab -->
+            <li>
+                <strong>Title of Your First Paper or Project</strong> <br>
+                Firstname Lastname, Co-author One, Co-author Two. <em>Name of Journal or Conference</em>, 2025.
+                <a class="doc-link" href="documents/my_previous_work_1.pdf" target="_blank">📄 PDF</a>
+            </li>
+
+            <!-- Method 2: Embedded PDF viewer -->
+            <li>
+                <strong>Title of Your Second Paper (With Embedded Viewer)</strong> <br>
+                Firstname Lastname. <em>Working Paper</em>, 2026.
+                <a class="doc-link" href="documents/my_previous_work_2.pdf" target="_blank">📄 PDF</a>
+                
+                <div class="pdf-container">
+                    <!-- The iframe displays the PDF directly on the page -->
+                    <iframe src="documents/my_previous_work_2.pdf" width="100%" height="450px" style="border: none;">
+                        Your browser does not support inline PDFs. Please download the PDF to view it.
+                    </iframe>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Footer / Optional Additional Info -->
+    <section id="footer" style="margin-top: 50px; font-size: 0.85rem; color: #777; border-top: 1px solid #eee; padding-top: 10px;">
+        <p>&copy; 2026 Firstname Lastname. Last updated: June 2026.</p>
+    </section>
+
+</body>
 </html>
