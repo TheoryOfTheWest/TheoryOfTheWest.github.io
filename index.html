@@ -12,37 +12,77 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.7;
-            color: #475569; /* 柔和的深灰色 */
-            background-color: #f8fafc; /* 极浅的蓝灰背景 */
+            color: #475569;
+            background-color: #ffffff; /* 统一改为纯白背景 */
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* === 全局顶部导航栏 === */
+        .global-nav {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             display: flex;
             justify-content: center;
         }
 
-        /* 页面主容器：采用现代的圆角卡片设计 */
-        .layout-container {
-            display: flex;
-            max-width: 1100px;
+        .nav-inner {
+            max-width: 1200px;
             width: 100%;
-            margin: 60px 20px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-            overflow: hidden; /* 保证子元素的圆角不溢出 */
+            padding: 12px 30px;
+            display: flex;
+            justify-content: flex-end; /* 导航项靠右排列 */
+            gap: 15px;
         }
 
-        /* 左侧固定侧边栏 */
+        .global-nav a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            color: #0f172a;
+            background-color: #f1f5f9;
+        }
+
+        .global-nav a.active {
+            color: #0f172a;
+            background-color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* 页面主容器：全屏通栏设计 */
+        .layout-container {
+            display: flex;
+            width: 100%;
+            flex: 1; /* 撑满剩余高度 */
+            min-height: calc(100vh - 60px);
+        }
+
+        /* === 左侧信息栏 (紧贴最左侧) === */
         .sidebar {
-            width: 320px;
-            background-color: #fdfdfd;
-            border-right: 1px solid #f1f5f9;
+            width: 200px;
+            background-color: #f8fafc; /* 给予左侧一个极浅的灰蓝色背景，与右侧白底区分 */
+            border-right: 1px solid #cbd5e1; /* 加深了分界线的颜色 */
             padding: 50px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            flex-shrink: 0; /* 防止被压缩 */
+            flex-shrink: 0;
         }
 
         .profile-photo {
@@ -52,17 +92,24 @@
             object-fit: cover;
             margin-bottom: 25px;
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 24px rgba(148, 163, 184, 0.2);
+            box-shadow: 0 4px 15px rgba(148, 163, 184, 0.2);
         }
 
         .sidebar h1 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: #0f172a;
             margin: 0 0 10px 0;
         }
 
         .sidebar .subtitle {
+            font-size: 0.90rem;
+            color: #64748b;
+            margin-bottom: 30px;
+            text-align: left; /* <- 加上这一行让文字靠左 */
+            width: 100%;      /* <- 加上这一行确保文字块占满区域，从而完美左对齐 */
+        }
+        .sidebar .subtitle2 {
             font-size: 0.95rem;
             color: #64748b;
             margin-bottom: 30px;
@@ -87,40 +134,49 @@
             font-size: 0.95rem;
             font-weight: 500;
             border-radius: 10px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1; /* 加深了按钮边框 */
             transition: all 0.3s ease;
         }
 
         .link-group a:hover {
-            background-color: #f8fafc;
-            border-color: #cbd5e1;
+            background-color: #f1f5f9;
             color: #0f172a;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        /* 右侧主要内容区 */
+        /* === 右侧主要内容区 === */
         .main-content {
             flex: 1;
-            padding: 60px 70px;
             background-color: #ffffff;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center; /* 确保内容在超大屏幕下居中 */
         }
 
-        .main-content section {
+        /* 内部内容容器：控制最大阅读宽度 */
+        .content-inner {
+            max-width: 850px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-inner section {
             margin-bottom: 45px;
         }
 
-        .main-content h2 {
+        .content-inner h2 {
             font-size: 1.4rem;
             font-weight: 600;
             color: #1e293b;
             margin-top: 0;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .main-content p {
+        .content-inner p {
             margin: 0 0 16px 0;
         }
 
@@ -134,7 +190,7 @@
             background: #f8fafc;
             padding: 20px 25px;
             border-radius: 12px;
-            border-left: 4px solid #cbd5e1;
+            border-left: 4px solid #94a3b8; /* 加深了卡片的左侧色带 */
             margin-bottom: 16px;
             transition: transform 0.2s ease;
         }
@@ -155,7 +211,7 @@
             background-color: #e0f2fe;
             color: #0369a1;
             padding: 4px 14px;
-            border-radius: 20px; /* 胶囊型按钮，更现代 */
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
             margin-left: 10px;
@@ -169,40 +225,57 @@
 
         /* 页脚 */
         footer {
-            margin-top: 40px;
+            margin-top: auto;
+            padding-top: 20px;
             font-size: 0.85rem;
             color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
         }
 
         /* 响应式设计：在手机或窄屏幕上自动转为上下单栏布局 */
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .layout-container {
                 flex-direction: column;
-                margin: 0;
-                border-radius: 0;
             }
             .sidebar {
-                width: auto;
+                width: 100%;
                 border-right: none;
-                border-bottom: 1px solid #f1f5f9;
+                border-bottom: 1px solid #cbd5e1;
                 padding: 40px 20px;
+                box-sizing: border-box;
             }
             .main-content {
-                padding: 40px 30px;
+                padding: 40px 20px;
+            }
+            .nav-inner {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
+<!-- === 全局页面顶部导航栏 === -->
+<nav class="global-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="active">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+</nav>
+
 <div class="layout-container">
     
-    <!-- 左侧区域：个人信息与链接 -->
+    <!-- 左侧区域：个人信息与链接 (已靠齐最左侧，加深边界线) -->
     <aside class="sidebar">
         <img src="images/profile.jpg" alt="Profile Photo" class="profile-photo">
         <h1>ZHANG Xichen</h1>
         <div class="subtitle">
-            I am currently seeking Ph.D. positions for 2026/27 (All locations/field welcome).<br><br>
+            I am currently seeking Ph.D. positions for 2026/27 (All locations/related field welcome).<br><br>
+            
+        </div>
+
+        <div class="subtitle2">
             The Hong Kong Polytechnic University<br>
             M.S. Electric Vehicles
         </div>
@@ -216,39 +289,42 @@
 
     <!-- 右侧区域：核心学术内容 -->
     <main class="main-content">
-        
-        <section id="about">
-            <h2>About Me</h2>
-            <p>My previous research experience mainly focuses on Power Electronics, Wireless Charging, and Converters.</p>
-            <p>Previously, I received my B.S. degree from Nanjing Tech University in 2024, and my M.S. degree from The Hong Kong Polytechnic University in 2026.</p>
-        </section>
-
-        <section id="research">
-            <h2>Research Interests</h2>
-            <ul>
-                <li><strong>Wireless Power Transfer (WPT):</strong> LLC DC-DC converter design, optimization, and hardware implementation.</li>
-                <li><strong>High-Efficiency Converters & WBG Devices:</strong> Multilevel converters, wide-bandgap device applications, and topology derivation.</li>
-                <li><strong>Robotics & Motor Control:</strong> Closed-loop BLDC motor control systems, cyber-physical microgrid resilience.</li>
-            </ul>
-        </section>
-
-        <section id="publications">
-            <h2>Previous Works</h2>
+        <!-- 阅读安全区：控制最大宽度 -->
+        <div class="content-inner">
             
-            <div class="pub-item">
-                <div class="pub-title">Advanced Segmented-Vector Pulse Frequency Modulation for Wireless Power Transfer</div>
-                <div style="font-size: 0.95rem; color: #64748b;">
-                    Master's degree Dissertation , 2025.
-                    <a class="doc-link" href="documents/ASVPFM.pdf" target="_blank">View PDF</a>
+            <section id="about">
+                <h2>About Me</h2>
+                <p>My previous research experience mainly focuses on Power Electronics, Wireless Charging, and Converters.</p>
+                <p>Previously, I received my B.S. degree from Nanjing Tech University in 2024, and my M.S. degree from The Hong Kong Polytechnic University in 2026.</p>
+            </section>
+
+            <section id="research">
+                <h2>Research Interests</h2>
+                <ul>
+                    <li><strong>Wireless Power Transfer (WPT):</strong> LLC DC-DC converter design, optimization, and hardware implementation.</li>
+                    <li><strong>High-Efficiency Converters & WBG Devices:</strong> Multilevel converters, wide-bandgap device applications, and topology derivation.</li>
+                    <li><strong>Robotics & Motor Control:</strong> Closed-loop BLDC motor control systems, cyber-physical microgrid resilience.</li>
+                </ul>
+            </section>
+
+            <section id="publications">
+                <h2>Previous Works</h2>
+                
+                <div class="pub-item">
+                    <div class="pub-title">Advanced Segmented-Vector Pulse Frequency Modulation for Wireless Power Transfer</div>
+                    <div style="font-size: 0.95rem; color: #64748b;">
+                        Master's degree Dissertation , 2026.
+                        <a class="doc-link" href="documents/ASVPFM.pdf" target="_blank">View PDF</a>
+                    </div>
                 </div>
-            </div>
-            
-        </section>
+                
+            </section>
 
-        <footer>
-            <p>&copy; Last updated: June 2026.</p>
-        </footer>
-        
+            <footer>
+                <p> Last updated: June 2026.</p>
+            </footer>
+            
+        </div>
     </main>
 </div>
 

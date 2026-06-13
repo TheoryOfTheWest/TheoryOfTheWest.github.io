@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - ZHANG Xichen</title>
+    <style>
+        /* 导入现代柔和的无衬线字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* 全局样式 */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: #475569;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* === 全局顶部导航栏 (毛玻璃悬浮效果) === */
+        .global-nav {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-inner {
+            max-width: 900px; /* 与单栏主容器宽度保持一致 */
+            width: 100%;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .global-nav a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .global-nav a:hover {
+            color: #0f172a;
+            background-color: #f1f5f9;
+        }
+
+        /* 当前所在页面的高亮状态 (移至 Projects) */
+        .global-nav a.active {
+            color: #0f172a;
+            background-color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* 页面主容器：单栏居中宽幅设计 */
+        .layout-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 40px 20px 60px 20px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            padding: 60px 80px;
+            box-sizing: border-box;
+        }
+
+        /* 标题排版 */
+        h1.page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            text-align: center;
+        }
+
+        /* 项目卡片列表 */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* 独立的现代项目卡片 */
+        .project-card {
+            background: #fdfdfd;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03);
+            transform: translateY(-3px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .project-year {
+            font-size: 0.85rem;
+            color: #64748b;
+            background-color: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .project-desc {
+            color: #475569;
+            margin: 0 0 20px 0;
+            font-size: 0.95rem;
+        }
+
+        /* 技能标签 (Tags) */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: #f8fafc;
+            color: #64748b;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 链接按钮 */
+        .project-links a {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .project-links a:hover {
+            background-color: #bae6fd;
+        }
+
+        /* 页脚 */
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
+            text-align: center;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .layout-container {
+                margin: 20px;
+                padding: 40px 30px;
+                width: auto;
+            }
+            .project-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- === 全局页面顶部导航栏 === -->
+<nav class="global-nav">
+    <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <!-- 将 active 状态切换到 Projects -->
+        <a href="projects.html" class="active">Projects</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+</nav>
+
+<!-- 页面主容器 (单栏布局) -->
+<div class="layout-container">
+    <h1 class="page-title">Research & Projects</h1>
+    
+    <div class="project-list">
+
+        <!-- 项目卡片 1 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Advanced Segmented-Vector Pulse Frequency Modulation</h2>
+                <span class="project-year">2024 - 2026</span>
+            </div>
+            <div class="project-tags">
+                <span class="tag">Wireless Power Transfer</span>
+                <span class="tag">LLC DC-DC Converter</span>
+                <span class="tag">Hardware Prototyping</span>
+            </div>
+            <p class="project-desc">
+                Developed an advanced segmented-vector pulse frequency modulation scheme for Wireless Power Transfer systems. Focuses on the full developmental cycle from mathematical derivation of ZVS conditions to physical prototype debugging and industrial applications.
+            </p>
+            <div class="project-links">
+                <a href="documents/ASVPFM.pdf" target="_blank">📄 View PDF / Thesis</a>
+            </div>
+        </div>
+
+        <!-- 项目卡片 2 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Closed-Loop BLDC Motor Control System</h2>
+                <span class="project-year">2023 - 2024</span>
+            </div>
+            <div class="project-tags">
+                <span class="tag">Motor Control</span>
+                <span class="tag">ESP32</span>
+                <span class="tag">Embedded Systems</span>
+            </div>
+            <p class="project-desc">
+                Engineered a high-performance closed-loop BLDC motor control system based on the ESP32 microcontroller for Bachelor's thesis. Emphasized simulation-to-hardware research methodology and actuator control.
+            </p>
+            <div class="project-links">
+                <a href="#">🔗 Project Details</a>
+            </div>
+        </div>
+
+        <!-- 项目卡片 3 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Raicom Robot Competition Control System</h2>
+                <span class="project-year">2023</span>
+            </div>
+            <div class="project-tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">PID Algorithms</span>
+                <span class="tag">Micro-controller Regulation</span>
+            </div>
+            <p class="project-desc">
+                Participated in the Raicom Robot competition, applying PID algorithms for micro-controller regulation to achieve precise autonomous navigation and control.
+            </p>
+        </div>
+
+        <!-- 项目卡片 4 -->
+        <div class="project-card">
+            <div class="project-header">
+                <h2 class="project-title">Malicious Domain Defense System</h2>
+                <span class="project-year">2022</span>
+            </div>
+            <div class="project-tags">
+                <span class="tag">Deep Learning</span>
+                <span class="tag">SDN</span>
+                <span class="tag">Award-Winning</span>
+            </div>
+            <p class="project-desc">
+                Co-developed a defense system utilizing Deep Learning and Software-Defined Networking (SDN). Received an award at the China Collegiate Computing Contest.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p> Last updated: June 2026.</p>
+    </footer>
+</div>
+
+</body>
+</html>
